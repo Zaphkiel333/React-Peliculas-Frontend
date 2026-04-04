@@ -1,23 +1,26 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import styles from './App.module.css'
 
-function App() {
+export default function App() {
+  const subtitulo = "Esto es otro subtitulo";
+  const imagenURL = "/favicon.svg";
 
-  const [horaActual, setHoraActual] = useState(new Date())
+  const duplicar = (valor: number) => valor * 2;
 
-  useEffect(() => {
-    const timerId = setInterval(() => {
-      setHoraActual(new Date());
-    }, 1000);
-    return () => clearInterval(timerId);
-  }, [])
+  const curadradoRojo = {
+    backgroundColor: "red",
+    width: "50px",
+    height: "50px",
+    marginLeft: "1rem",
+  };
+
   return (
-    <div>
-      <h3>Ejemplo React</h3>
-      <input />
-      <div>{horaActual.toString()}</div>
-    </div>
-  )
+    <>
+      <h1 className="rojo">Hola mundo</h1>
+      <div style={curadradoRojo}></div>
+      <h3 className={styles.color}>{subtitulo.toLocaleUpperCase()}</h3>
+      <h4>El doble de 3 es {duplicar(3)}</h4>
+      <div style={curadradoRojo}></div>
+      <img src={imagenURL} alt="logo vite" />
+    </>
+  );
 }
-
-export default App
