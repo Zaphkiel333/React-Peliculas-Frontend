@@ -1,26 +1,29 @@
-import styles from './App.module.css'
+import { useState } from "react";
 
 export default function App() {
-  const subtitulo = "Esto es otro subtitulo";
-  const imagenURL = "/favicon.svg";
 
-  const duplicar = (valor: number) => valor * 2;
+  console.log('Renderizando el componente App');
 
-  const curadradoRojo = {
-    backgroundColor: "red",
-    width: "50px",
-    height: "50px",
-    marginLeft: "1rem",
-  };
+  const [texto, setTexto] = useState('');
+
+  const manejarClick = () => alert('Click');
+
+  const manejarKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    setTexto(e.currentTarget.value);
+  }
 
   return (
     <>
-      <h1 className="rojo">Hola mundo</h1>
-      <div style={curadradoRojo}></div>
-      <h3 className={styles.color}>{subtitulo.toLocaleUpperCase()}</h3>
-      <h4>El doble de 3 es {duplicar(3)}</h4>
-      <div style={curadradoRojo}></div>
-      <img src={imagenURL} alt="logo vite" />
+      <h1 className="rojo" onClick={() => alert('me has clickeado')}>Hola mundo</h1>
+
+      <button onClick={manejarClick}>Clickeame</button>
+      
+      <div>
+        <input onKeyUp={(e) => manejarKeyUp(e)} />
+      </div>
+      <div>
+        <p>Haz escrito: {texto}</p>
+      </div>
     </>
   );
 }
