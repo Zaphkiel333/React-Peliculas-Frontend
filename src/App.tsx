@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Cabecera from "./Cabecera";
+import MostrarTexto from "./MostrarTexto";
 
 export default function App() {
 
@@ -14,16 +16,15 @@ export default function App() {
 
   return (
     <>
-      <h1 className="rojo" onClick={() => alert('me has clickeado')}>Hola mundo</h1>
+      <Cabecera />
 
       <button onClick={manejarClick}>Clickeame</button>
       
       <div>
         <input onKeyUp={(e) => manejarKeyUp(e)} />
       </div>
-      <div>
-        <p>Haz escrito: {texto}</p>
-      </div>
+      
+      <MostrarTexto texto={texto} />
     </>
   );
 }
