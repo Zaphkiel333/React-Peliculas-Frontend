@@ -1,30 +1,31 @@
-import { useState } from "react";
 import Cabecera from "./Cabecera";
-import MostrarTexto from "./MostrarTexto";
+import ProyectarContenido from "./ProyectarContenido";
+import ProyectarContenido2 from "./ProyectarContenido2";
 
-export default function App() {
-
-  console.log('Renderizando el componente App');
-
-  const [texto, setTexto] = useState('');
-
-  const manejarClick = () => alert('Click');
-
-  const manejarKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    setTexto(e.currentTarget.value);
-  }
-
-  return (
+export default function App(){
+  return(
     <>
-      <Cabecera />
+      <h2>Ejemplo 2</h2>
 
-      <button onClick={manejarClick}>Clickeame</button>
-      
-      <div>
-        <input onKeyUp={(e) => manejarKeyUp(e)} />
-      </div>
-      
-      <MostrarTexto texto={texto} />
+      <ProyectarContenido>
+        <>
+          <button onClick={() => alert('He sido clickeado')}>Clickeame</button>
+          <h4>Este es un H4</h4>
+        </>
+      </ProyectarContenido>
+
+      <h2>Ejemplo 2</h2>
+      <ProyectarContenido2
+        parteSuperior={<button>Boton superior</button>}
+        parteIntermedia={<>
+          <Cabecera />
+          <p>Lo que yo quiera</p>
+        </>}
+        parteInferior={<> 
+        
+        </>}
+      />
+
     </>
-  );
+  )
 }
