@@ -1,31 +1,28 @@
-import Cabecera from "./Cabecera";
-import ProyectarContenido from "./ProyectarContenido";
-import ProyectarContenido2 from "./ProyectarContenido2";
+import { useState } from "react";
+import ContenidoDinamico from "./ContenidoDinamico";
+import ContenidoDinamicoIf from "./ContenidoDinamicoIf";
 
-export default function App(){
-  return(
+export default function App() {
+  const [mostrar, setMostrar] = useState(false);
+
+  const [calificacion, setCalificacion] = useState<number | null>(null);
+
+  return (
     <>
-      <h2>Ejemplo 2</h2>
+      <input type="checkbox" onChange={(e) => setMostrar(e.target.checked)} />
+      <label>Mostrar el mensaje oculto</label>
 
-      <ProyectarContenido>
-        <>
-          <button onClick={() => alert('He sido clickeado')}>Clickeame</button>
-          <h4>Este es un H4</h4>
-        </>
-      </ProyectarContenido>
+      <ContenidoDinamico mostrarContenido={mostrar} />
 
-      <h2>Ejemplo 2</h2>
-      <ProyectarContenido2
-        parteSuperior={<button>Boton superior</button>}
-        parteIntermedia={<>
-          <Cabecera />
-          <p>Lo que yo quiera</p>
-        </>}
-        parteInferior={<> 
-        
-        </>}
+      <label> ingrese la calificacion:</label>
+      <input
+        type="number"
+        onChange={(e) => setCalificacion(Number(e.target.value))}
       />
 
+      {calificacion ? (
+        <ContenidoDinamicoIf calificacion={calificacion} />
+      ) : undefined}
     </>
-  )
+  );
 }
