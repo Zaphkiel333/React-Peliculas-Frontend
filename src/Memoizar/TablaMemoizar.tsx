@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import FilaMemoizar from "./FIlaMemoizar";
 import type Persona from "../persona.model";
 
-export default function TablaMemoizar() {
+const TablaMemoizar = memo(function TablaMemoizar() {
+  console.log("Renderizando el componente de tabla");
+
   const personasFunte: Persona[] = [
     { id: 1, nombre: "Rafael", departamento: "Masaya" },
     { id: 2, nombre: "Yanna", departamento: "Managua" },
@@ -35,4 +37,6 @@ export default function TablaMemoizar() {
       </tbody>
     </table>
   );
-}
+});
+
+export default TablaMemoizar;
