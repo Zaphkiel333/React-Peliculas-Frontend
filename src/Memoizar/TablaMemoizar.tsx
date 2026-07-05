@@ -1,6 +1,7 @@
 import { memo, useCallback, useState } from "react";
 import FilaMemoizar from "./FIlaMemoizar";
 import type Persona from "../persona.model";
+import { ErrorBoundary } from "react-error-boundary";
 
 const TablaMemoizar = memo(function TablaMemoizar() {
   console.log("Renderizando el componente de tabla");
@@ -34,7 +35,18 @@ const TablaMemoizar = memo(function TablaMemoizar() {
       </thead>
       <tbody>
         {personas.map((p) => (
-          <FilaMemoizar key={p.id} persona={p} remover={removerPersona} />
+          <ErrorBoundary
+            key={p.id}
+            fallback={
+              <>
+                <td colSpan={3} style={{ color: "red" }}>
+                  --Error: {p.nombre}
+                </td>
+              </>
+            }
+          >
+            <FilaMemoizar persona={p} remover={removerPersona} />
+          </ErrorBoundary>
         ))}
       </tbody>
     </table>

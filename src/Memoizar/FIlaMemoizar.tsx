@@ -6,6 +6,11 @@ const FilaMemoizar = memo(function FilaMemoizar({
   remover,
 }: FilaProps) {
   console.log(`Cargar fila de ${persona.nombre}`);
+
+  if (persona.nombre === "Rafael") {
+    throw Error();
+  }
+
   return (
     <tr>
       <td>{persona.nombre}</td>
