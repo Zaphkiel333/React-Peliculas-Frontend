@@ -1,9 +1,7 @@
-import EjemploMemoizarTabla from "./Memoizar/EjemploMemoizarTabla";
-
 export default function App() {
   return (
     <>
-      <EjemploMemoizarTabla />
+      <h1>Hola mundo</h1>
     </>
   );
 }
