@@ -1,3 +1,18 @@
+import type { SubmitHandler } from "react-hook-form";
+import type ActorCreacion from "../modelos/ActoresCreacion.model";
+import FormularioActor from "./FormularioActor";
+
 export default function CrearActor() {
-  return <h3>Crear Actores</h3>;
+  const onSubmit: SubmitHandler<ActorCreacion> = async (data) => {
+    console.log("Creando actor...");
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    console.log(data);
+  };
+
+  return (
+    <>
+      <h3>Crear Actores</h3>
+      <FormularioActor onSubmit={onSubmit} />
+    </>
+  );
 }
